@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graficos</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body style="display: flex;">
+    <div>
+        <!-- tag que cria um quadro branco, o chartJs manipula esse quaddro criando os graficos -->
+        <canvas id="myChart" style="position: relative; height:40vh; width:80vw"></canvas>
+    </div>
+    <div>
+        <!-- tag que cria um quadro branco, o chartJs manipula esse quaddro criando os graficos -->
+        <canvas id="myChart2" style="position: relative; height:40vh; width:80vw"></canvas>
+    </div>
+</body>
+
+<script>
+    // varivel que armazena onde queremos que o hrafico seja renderizado
+  const ctx = document.getElementById('myChart');
+  const ctx2 = document.getElementById('myChart2');
+
+  // renderização do grafico na tela
+  new Chart(ctx, {
+    // Define o tipo de grafico que será exibido
+    type: 'line',
+    // define o tipo de datas que vamos usar
+    data: {
+        // Labels é resposavel por definir informações que apareceram no eixo X
+      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+      // dataSets são as métricas que nosso grafico vai ter, ela é responsavel pela linha. 
+      datasets: [{
+        // Titulo da linha
+        label: 'Umidade',
+        // Define os dados dentro do vetor
+        data: [80, 82, 80, 85, 80, 83],
+        // comandos de estilização
+        borderWidth: 1
+      },
+    {
+        // Titulo da linha
+        label: 'Temperatura',
+        // Define os dados dentro do vetor
+        data: [30, 29, 28, 25, 22, 23],
+        // comandos de estilização
+        borderWidth: 1
+        
+      }]
+    }, 
+    // opções do grafico
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  
+  new Chart(ctx2, {
+    // Define o tipo de grafico que será exibido
+    type: 'bar',
+    // define o tipo de datas que vamos usar
+    data: {
+        // Labels é resposavel por definir informações que apareceram no eixo X
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+      // dataSets são as métricas que nosso grafico vai ter, ela é responsavel pela linha. 
+      datasets: [{
+        // Titulo da linha
+        label: 'Umidade Média',
+        // Define os dados dentro do vetor
+        data: [90, 89, 93, 87, 88, 82],
+        // comandos de estilização
+        borderWidth: 1,
+        backgroundColor: '#0047AB'
+      }, {
+        // Titulo da linha
+        label: 'Temperatura Média',
+        // Define os dados dentro do vetor
+        data: [22, 24, 27, 23, 20, 18],
+        // comandos de estilização
+        borderWidth: 1,
+        backgroundColor: '#f45b82'
+      }]
+    }, 
+    // opções do grafico
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+
+</script>
+
+</html>
